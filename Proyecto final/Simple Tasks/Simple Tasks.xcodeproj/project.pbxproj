@@ -22,6 +22,10 @@
 		2111612318DFFA2100BC67B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2111610718DFFA2100BC67B8 /* CoreData.framework */; };
 		2111612B18DFFA2100BC67B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2111612918DFFA2100BC67B8 /* InfoPlist.strings */; };
 		2111612D18DFFA2100BC67B8 /* Simple_TasksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111612C18DFFA2100BC67B8 /* Simple_TasksTests.m */; };
+		2111613B18E0011B00BC67B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2111613A18E0011B00BC67B8 /* Main.storyboard */; };
+		2111613E18E006B500BC67B8 /* TaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111613D18E006B500BC67B8 /* TaskListTableViewController.m */; };
+		2111614118E0070D00BC67B8 /* TaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111614018E0070D00BC67B8 /* TaskTableViewController.m */; };
+		2111614418E0072800BC67B8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111614318E0072800BC67B8 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,13 @@
 		2111612818DFFA2100BC67B8 /* Simple TasksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple TasksTests-Info.plist"; sourceTree = "<group>"; };
 		2111612A18DFFA2100BC67B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2111612C18DFFA2100BC67B8 /* Simple_TasksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple_TasksTests.m; sourceTree = "<group>"; };
+		2111613A18E0011B00BC67B8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		2111613C18E006B500BC67B8 /* TaskListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListTableViewController.h; sourceTree = "<group>"; };
+		2111613D18E006B500BC67B8 /* TaskListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListTableViewController.m; sourceTree = "<group>"; };
+		2111613F18E0070D00BC67B8 /* TaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTableViewController.h; sourceTree = "<group>"; };
+		2111614018E0070D00BC67B8 /* TaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewController.m; sourceTree = "<group>"; };
+		2111614218E0072800BC67B8 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2111614318E0072800BC67B8 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +128,13 @@
 			children = (
 				2111611218DFFA2100BC67B8 /* AppDelegate.h */,
 				2111611318DFFA2100BC67B8 /* AppDelegate.m */,
+				2111613A18E0011B00BC67B8 /* Main.storyboard */,
+				2111614218E0072800BC67B8 /* DetailViewController.h */,
+				2111614318E0072800BC67B8 /* DetailViewController.m */,
+				2111613F18E0070D00BC67B8 /* TaskTableViewController.h */,
+				2111614018E0070D00BC67B8 /* TaskTableViewController.m */,
+				2111613C18E006B500BC67B8 /* TaskListTableViewController.h */,
+				2111613D18E006B500BC67B8 /* TaskListTableViewController.m */,
 				2111611818DFFA2100BC67B8 /* Images.xcassets */,
 				2111611518DFFA2100BC67B8 /* Simple_Tasks.xcdatamodeld */,
 				2111610A18DFFA2100BC67B8 /* Supporting Files */,
@@ -228,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2111613B18E0011B00BC67B8 /* Main.storyboard in Resources */,
 				2111610E18DFFA2100BC67B8 /* InfoPlist.strings in Resources */,
 				2111611918DFFA2100BC67B8 /* Images.xcassets in Resources */,
 			);
@@ -250,7 +269,10 @@
 			files = (
 				2111611418DFFA2100BC67B8 /* AppDelegate.m in Sources */,
 				2111611718DFFA2100BC67B8 /* Simple_Tasks.xcdatamodeld in Sources */,
+				2111614118E0070D00BC67B8 /* TaskTableViewController.m in Sources */,
+				2111613E18E006B500BC67B8 /* TaskListTableViewController.m in Sources */,
 				2111611018DFFA2100BC67B8 /* main.m in Sources */,
+				2111614418E0072800BC67B8 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
