@@ -28,12 +28,15 @@
     
     if (self.taskItem) {
         self.taskTitleField.text = self.taskItem.taskTitle;
+        self.taskDescriptionField.text = self.taskItem.taskDescription;
+        self.taskDueDateField.date = self.taskItem.taskDueDate;
     }
 }
 
 - (void)setTaskItem:(id)newDetailItem
 {
-    if (_taskItem != newDetailItem) {
+    if (_taskItem != newDetailItem)
+    {
         _taskItem = newDetailItem;
         
         // Update the view.
@@ -63,4 +66,17 @@
 }
 */
 
+- (IBAction)donePressed:(id)sender
+{
+    if (![self.taskTitleField.text isEqualToString: @""])
+    {
+        [self.delegate addTask: self.taskTitleField.text withDescription: self.taskDescriptionField.text withDueDate: self.taskDueDateField.date];
+        [self.delegate removeView];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Task title is missing" delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
 @end

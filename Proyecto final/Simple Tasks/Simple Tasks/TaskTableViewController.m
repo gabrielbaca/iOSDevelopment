@@ -20,6 +20,13 @@
 
 @implementation TaskTableViewController
 
+- (void) addTask: (NSString *) title withDescription: (NSString *) desc withDueDate: (NSDate *) date
+{
+    Task *tmp = [[Task alloc] initWithTitle: title description: desc dueDate: date];
+    [_tasks insertObject: tmp atIndex: 0];
+    [self.tableView reloadData];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -49,41 +56,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
+    Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
+     _tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        Task *tempTask;
-        tempTask.taskTitle = [alertView textFieldAtIndex:0].text;
-        
-        [_tasks addObject: tempTask];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
-
--(void) insertNewObject: (id) sender
-{
-    if (!_tasks) {
-        _tasks = [[NSMutableArray alloc] init];
-    }
-    UIAlertView *titlePrompt = [[UIAlertView alloc] initWithTitle:@"Task title" message:@"Insert task title" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
-    [titlePrompt setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [titlePrompt show];
 }
 
 #pragma mark - Table view data source
@@ -103,6 +92,7 @@
 
 - (TaskCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+#error - Task cell is not being created
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
     Task *tempTask = _tasks[indexPath.row];
     tempTask.taskDueDate = [NSDate date];
@@ -163,6 +153,18 @@
         Task *element = _tasks[indexPath.row];
         [[segue destinationViewController] setTaskItem: element];
     }
+    else
+    {
+        if ([[segue identifier] isEqualToString:@"addSegue"]) {
+            [[segue destinationViewController] setDelegate:self];
+        }
+    }
+}
+
+- (void) removeView
+{
+    NSArray *array = [self.navigationController viewControllers];
+    [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
 }
 
 

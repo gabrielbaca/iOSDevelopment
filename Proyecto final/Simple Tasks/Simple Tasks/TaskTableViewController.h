@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "DetailViewController.h"
 
 @interface TaskTableViewController : UITableViewController
+<AddTaskProtocol>
 @property (strong, nonatomic) id taskListTitle;
 @end

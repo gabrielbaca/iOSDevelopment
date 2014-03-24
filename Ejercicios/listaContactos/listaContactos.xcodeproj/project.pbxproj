@@ -125,11 +125,11 @@
 			children = (
 				0E2A0FE918ABBDD2007B08E4 /* AppDelegate.h */,
 				0E2A0FEA18ABBDD2007B08E4 /* AppDelegate.m */,
-				88B077FF18BC3926005B6399 /* ViewControllerAgregar.h */,
-				88B0780018BC3926005B6399 /* ViewControllerAgregar.m */,
 				0E2A0FEC18ABBDD2007B08E4 /* Main.storyboard */,
 				0E2A0FEF18ABBDD2007B08E4 /* MasterViewController.h */,
 				0E2A0FF018ABBDD2007B08E4 /* MasterViewController.m */,
+				88B077FF18BC3926005B6399 /* ViewControllerAgregar.h */,
+				88B0780018BC3926005B6399 /* ViewControllerAgregar.m */,
 				0E2A0FF218ABBDD2007B08E4 /* DetailViewController.h */,
 				0E2A0FF318ABBDD2007B08E4 /* DetailViewController.m */,
 				0E2A0FF518ABBDD2007B08E4 /* Images.xcassets */,
