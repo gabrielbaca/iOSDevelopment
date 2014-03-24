@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
+#import "Task.h"
 @interface DetailViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITextField *taskTitleField;
+@property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *taskDueDateField;
+@property (nonatomic, strong) Task *taskItem;
 @end

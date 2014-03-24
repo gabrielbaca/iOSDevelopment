@@ -7,9 +7,9 @@
 //
 
 #import "DetailViewController.h"
-
+#import "TaskTableViewController.h"
 @interface DetailViewController ()
-
+- (void)configureView;
 @end
 
 @implementation DetailViewController
@@ -22,7 +22,24 @@
     }
     return self;
 }
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.taskItem) {
+        self.taskTitleField.text = self.taskItem.taskTitle;
+    }
+}
 
+- (void)setTaskItem:(id)newDetailItem
+{
+    if (_taskItem != newDetailItem) {
+        _taskItem = newDetailItem;
+        
+        // Update the view.
+        [self configureView];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

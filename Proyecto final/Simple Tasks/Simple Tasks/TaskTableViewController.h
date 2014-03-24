@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface TaskTableViewController : UITableViewController
-
+@property (strong, nonatomic) id taskListTitle;
 @end

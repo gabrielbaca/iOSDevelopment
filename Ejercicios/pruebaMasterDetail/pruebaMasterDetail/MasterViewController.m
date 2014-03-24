@@ -30,8 +30,8 @@
     array = [[NSArray alloc] initWithObjects:@"uno", @"dos", @"tres", @"cuatro", @"cinco", @"seis",@"siete", @"ocho", @"nueve", @"diez", @"once", @"doce", nil];
 //    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 //
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+   self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning

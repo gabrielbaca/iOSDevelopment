@@ -37,6 +37,11 @@
                BlueprintName = "Simple TasksTests"
                ReferencedContainer = "container:Simple Tasks.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Simple_TasksTests/testExample">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
