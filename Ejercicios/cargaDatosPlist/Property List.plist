@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>tipo</key>
+		<string>Touch</string>
+		<key>capacidad</key>
+		<string>32 GB</string>
+		<key>precio</key>
+		<integer>299</integer>
+		<key>urlFoto</key>
+		<string>http://images.apple.com/ipod-touch/images/overview_hero.jpg</string>
+	</dict>
+	<dict>
+		<key>tipo</key>
+		<string>Nano</string>
+		<key>capacidad</key>
+		<string>16 GB</string>
+		<key>precio</key>
+		<integer>149</integer>
+		<key>urlFoto</key>
+		<string>http://images.apple.com/ipod-nano/images/overview_hero.jpg</string>
+	</dict>
+	<dict>
+		<key>tipo</key>
+		<string>Classic</string>
+		<key>capacidad</key>
+		<string>160 GB</string>
+		<key>precio</key>
+		<integer>249</integer>
+		<key>urlFoto</key>
+		<string>http://images.apple.com/ipodclassic/images/overview_hero.jpg</string>
+	</dict>
+	<dict>
+		<key>tipo</key>
+		<string>Shuffle</string>
+		<key>capacidad</key>
+		<string>2 GB</string>
+		<key>precio</key>
+		<integer>49</integer>
+		<key>urlFoto</key>
+		<string>http://images.apple.com/ipod-shuffle/images/hero1.jpg</string>
+	</dict>
+</array>
+</plist>
