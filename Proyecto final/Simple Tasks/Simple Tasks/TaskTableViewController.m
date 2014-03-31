@@ -13,6 +13,8 @@
 @interface TaskTableViewController ()
 {
     NSMutableArray *_tasks;
+#warning - index added
+    NSInteger idx;
 }
 - (void)configureView;
 @end
