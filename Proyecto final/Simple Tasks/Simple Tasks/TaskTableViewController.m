@@ -9,7 +9,6 @@
 #import "TaskTableViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
-#import "DetailViewController.h"
 
 @interface TaskTableViewController ()
 {
@@ -20,10 +19,13 @@
 
 @implementation TaskTableViewController
 
-- (void) addTask: (NSString *) title withDescription: (NSString *) desc withDueDate: (NSDate *) date
+- (void) addTask: (id) task
 {
-    Task *tmp = [[Task alloc] initWithTitle: title description: desc dueDate: date];
-    [_tasks insertObject: tmp atIndex: 0];
+    if(!_tasks)
+    {
+        _tasks = [[NSMutableArray alloc] init];
+    }
+    [_tasks insertObject: task atIndex: 0];
     [self.tableView reloadData];
 }
 
@@ -56,16 +58,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView reloadData];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
+
     Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
      _tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
+    [self.tableView reloadData];
     
 }
 
@@ -92,10 +88,10 @@
 
 - (TaskCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#error - Task cell is not being created
+//#error - Task cell is not being created
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
     Task *tempTask = _tasks[indexPath.row];
-    tempTask.taskDueDate = [NSDate date];
+    //tempTask.taskDueDate = [NSDate date];
     cell.cellTitle.text = tempTask.taskTitle;
     cell.cellDueDate.text = [tempTask formatDate];
     return cell;
@@ -117,6 +113,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [_tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -163,8 +160,8 @@
 
 - (void) removeView
 {
-    NSArray *array = [self.navigationController viewControllers];
-    [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
+    //NSArray *array = [self.navigationController viewControllers];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

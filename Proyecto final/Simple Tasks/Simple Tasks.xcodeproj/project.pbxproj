@@ -27,6 +27,7 @@
 		2111614418E0072800BC67B8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111614318E0072800BC67B8 /* DetailViewController.m */; };
 		2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E2FD18E01FFE00B303F9 /* TaskCell.m */; };
 		2132E30118E0211B00B303F9 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E30018E0211B00B303F9 /* Task.m */; };
+		21EC715A18E94311002B7E14 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EC715918E94311002B7E14 /* AddTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		2132E2FD18E01FFE00B303F9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		2132E2FF18E0211B00B303F9 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		2132E30018E0211B00B303F9 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		21EC715818E94311002B7E14 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		21EC715918E94311002B7E14 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				2132E30018E0211B00B303F9 /* Task.m */,
 				2132E2FC18E01FFE00B303F9 /* TaskCell.h */,
 				2132E2FD18E01FFE00B303F9 /* TaskCell.m */,
+				21EC715818E94311002B7E14 /* AddTaskViewController.h */,
+				21EC715918E94311002B7E14 /* AddTaskViewController.m */,
 				2111614218E0072800BC67B8 /* DetailViewController.h */,
 				2111614318E0072800BC67B8 /* DetailViewController.m */,
 				2111611818DFFA2100BC67B8 /* Images.xcassets */,
@@ -281,6 +286,7 @@
 				2132E30118E0211B00B303F9 /* Task.m in Sources */,
 				2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */,
 				2111611018DFFA2100BC67B8 /* main.m in Sources */,
+				21EC715A18E94311002B7E14 /* AddTaskViewController.m in Sources */,
 				2111614418E0072800BC67B8 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

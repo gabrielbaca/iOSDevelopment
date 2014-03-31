@@ -9,14 +9,14 @@
 #import "Task.h"
 
 @implementation Task
-- (id) initWithTitle: (NSString *) title description: (NSString *) desc dueDate: (NSDate *) date
+- (id) initWithTitle: (NSString *) title description: (NSString *) desc dueDate: (NSDate *) taskDate
 {
     self = [super init];
     if (self)
     {
         _taskTitle = title;
         _taskDescription = desc;
-        _taskDueDate = date;
+        _taskDueDate = taskDate;
     }
     return self;
 }
