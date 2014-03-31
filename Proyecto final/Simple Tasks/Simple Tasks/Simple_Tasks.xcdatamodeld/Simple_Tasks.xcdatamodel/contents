@@ -4,13 +4,14 @@
         <attribute name="task_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="task_due_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="taskListRel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskList" inverseName="tasks" inverseEntity="TaskList" syncable="YES"/>
     </entity>
     <entity name="TaskList" representedClassName="UIViewController" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="taskListRel" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="-254" positionY="9" width="128" height="88"/>
+        <element name="Task" positionX="-279" positionY="-40" width="128" height="103"/>
         <element name="TaskList" positionX="-479" positionY="-10" width="128" height="73"/>
     </elements>
 </model>
