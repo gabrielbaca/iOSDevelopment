@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Task.h"
+#import "TaskTableViewController.h"
 
 @interface DetailViewController : UIViewController
 

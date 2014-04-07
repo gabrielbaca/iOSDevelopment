@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Task.h"
-@protocol AddTaskProtocol <NSObject>
 
+@protocol AddTaskProtocol <NSObject>
 @required
 - (void) addTask: (id) task;
-- (void) removeView;
+- (void) modTask: (id) task atIndex: (NSUInteger) arrayIndex;
+- (void) removeView: (int) index;
 @end
+
+#import "Task.h"
+#import "TaskTableViewController.h"
+
 
 @interface AddTaskViewController : UIViewController
 @property (nonatomic, strong) id <AddTaskProtocol> delegate;

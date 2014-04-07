@@ -25,6 +25,9 @@
 		2111613E18E006B500BC67B8 /* TaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111613D18E006B500BC67B8 /* TaskListTableViewController.m */; };
 		2111614118E0070D00BC67B8 /* TaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111614018E0070D00BC67B8 /* TaskTableViewController.m */; };
 		2111614418E0072800BC67B8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2111614318E0072800BC67B8 /* DetailViewController.m */; };
+		211A348918F29EDC00415358 /* checkbox-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348618F29EDC00415358 /* checkbox-checked.png */; };
+		211A348A18F29EDC00415358 /* checkbox-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348718F29EDC00415358 /* checkbox-pressed.png */; };
+		211A348B18F29EDC00415358 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348818F29EDC00415358 /* checkbox.png */; };
 		2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E2FD18E01FFE00B303F9 /* TaskCell.m */; };
 		2132E30118E0211B00B303F9 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E30018E0211B00B303F9 /* Task.m */; };
 		21EC715A18E94311002B7E14 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EC715918E94311002B7E14 /* AddTaskViewController.m */; };
@@ -65,6 +68,9 @@
 		2111614018E0070D00BC67B8 /* TaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewController.m; sourceTree = "<group>"; };
 		2111614218E0072800BC67B8 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2111614318E0072800BC67B8 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		211A348618F29EDC00415358 /* checkbox-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-checked.png"; sourceTree = "<group>"; };
+		211A348718F29EDC00415358 /* checkbox-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-pressed.png"; sourceTree = "<group>"; };
+		211A348818F29EDC00415358 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		2132E2FC18E01FFE00B303F9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		2132E2FD18E01FFE00B303F9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		2132E2FF18E0211B00B303F9 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 		2111610918DFFA2100BC67B8 /* Simple Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				211A348C18F29EE900415358 /* Images */,
 				2111611218DFFA2100BC67B8 /* AppDelegate.h */,
 				2111611318DFFA2100BC67B8 /* AppDelegate.m */,
 				2111613A18E0011B00BC67B8 /* Main.storyboard */,
@@ -181,6 +188,16 @@
 				2111612918DFFA2100BC67B8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		211A348C18F29EE900415358 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				211A348618F29EDC00415358 /* checkbox-checked.png */,
+				211A348718F29EDC00415358 /* checkbox-pressed.png */,
+				211A348818F29EDC00415358 /* checkbox.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +277,10 @@
 			files = (
 				2111613B18E0011B00BC67B8 /* Main.storyboard in Resources */,
 				2111610E18DFFA2100BC67B8 /* InfoPlist.strings in Resources */,
+				211A348B18F29EDC00415358 /* checkbox.png in Resources */,
+				211A348918F29EDC00415358 /* checkbox-checked.png in Resources */,
 				2111611918DFFA2100BC67B8 /* Images.xcassets in Resources */,
+				211A348A18F29EDC00415358 /* checkbox-pressed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

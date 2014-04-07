@@ -11,7 +11,8 @@
 #import "AddTaskViewController.h"
 #import "DetailViewController.h"
 
-@interface TaskTableViewController : UITableViewController
-<AddTaskProtocol>
+NSUInteger cellIndex;
+
+@interface TaskTableViewController : UITableViewController <AddTaskProtocol>
 @property (strong, nonatomic) id taskListTitle;
 @end
