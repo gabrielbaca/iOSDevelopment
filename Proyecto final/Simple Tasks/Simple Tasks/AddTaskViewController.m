@@ -7,7 +7,6 @@
 //
 
 #import "AddTaskViewController.h"
-#import "Task.h"
 @interface AddTaskViewController ()
 {
     UITapGestureRecognizer *tapRecognizer;
@@ -98,13 +97,14 @@
     {
         Task *tmp = [[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
         [self.delegate addTask: tmp];
-        [self.delegate removeView];
+        [self.delegate removeView: 0];
     }
     else if(![self.taskTitleField.text isEqualToString: @""] && self.taskItem)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Pending implementation!" delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil, nil];
         Task *tmp = [[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
-        [alert show];
+        NSUInteger modIndex = cellIndex;
+        [self.delegate modTask:tmp atIndex: modIndex];
+        [self.delegate removeView: 1];
     }
     else
     {

@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>29AEA8BF-8246-46BB-9C5C-5BB104F6FF06</string>
+	<string>E779DD3E-9CD9-4D32-9D8D-C550118D17E1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Simple Tasks</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>45EFBE20-E491-42D3-A22D-BF64014384B3</key>
-		<string>https://github.com/gabrielbaca/iOSDevelopment.git</string>
+		<key>E1BC030E-AC79-4C10-8A23-72AFFCF8D439</key>
+		<string>https://github.com/gabrielbaca/IOSDevelopment.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Proyecto final/Simple Tasks/Simple Tasks.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>45EFBE20-E491-42D3-A22D-BF64014384B3</key>
+		<key>E1BC030E-AC79-4C10-8A23-72AFFCF8D439</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/gabrielbaca/iOSDevelopment.git</string>
+	<string>https://github.com/gabrielbaca/IOSDevelopment.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>45EFBE20-E491-42D3-A22D-BF64014384B3</string>
+	<string>E1BC030E-AC79-4C10-8A23-72AFFCF8D439</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>45EFBE20-E491-42D3-A22D-BF64014384B3</string>
+			<string>E1BC030E-AC79-4C10-8A23-72AFFCF8D439</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Programas</string>
+			<string>IOSDevelopment</string>
 		</dict>
 	</array>
 </dict>

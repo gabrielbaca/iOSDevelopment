@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Task" syncable="YES">
-        <attribute name="task_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="task_due_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="taskDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="taskListRel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskList" inverseName="tasks" inverseEntity="TaskList" syncable="YES"/>
     </entity>
     <entity name="TaskList" representedClassName="UIViewController" syncable="YES">
@@ -11,7 +11,7 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="taskListRel" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="-279" positionY="-40" width="128" height="103"/>
+        <element name="Task" positionX="-279" positionY="-40" width="128" height="105"/>
         <element name="TaskList" positionX="-479" positionY="-10" width="128" height="73"/>
     </elements>
 </model>

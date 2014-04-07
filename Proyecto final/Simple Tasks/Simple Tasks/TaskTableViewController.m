@@ -1,4 +1,4 @@
-//
+		//
 //  TaskTableViewController.m
 //  Simple Tasks
 //
@@ -13,8 +13,6 @@
 @interface TaskTableViewController ()
 {
     NSMutableArray *_tasks;
-#warning - index added
-    NSInteger idx;
 }
 - (void)configureView;
 @end
@@ -28,6 +26,16 @@
         _tasks = [[NSMutableArray alloc] init];
     }
     [_tasks insertObject: task atIndex: 0];
+    [self.tableView reloadData];
+}
+
+- (void) modTask: (id) task atIndex: (NSUInteger) arrayIndex
+{
+    if(!_tasks)
+    {
+        _tasks = [[NSMutableArray alloc] init];
+    }
+    [_tasks insertObject: task atIndex: arrayIndex];
     [self.tableView reloadData];
 }
 
@@ -90,7 +98,6 @@
 
 - (TaskCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//#error - Task cell is not being created
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
     Task *tempTask = _tasks[indexPath.row];
     //tempTask.taskDueDate = [NSDate date];
@@ -150,6 +157,7 @@
     if ([[segue identifier] isEqualToString:@"detailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Task *element = _tasks[indexPath.row];
+        cellIndex = indexPath.row;
         [[segue destinationViewController] setTaskItem: element];
     }
     else
@@ -160,11 +168,18 @@
     }
 }
 
-- (void) removeView
+- (void) removeView: (int) index
 {
-    //NSArray *array = [self.navigationController viewControllers];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIViewController * viewController = [self.navigationController.viewControllers objectAtIndex:1];
+    if (index == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if (index == 1)
+    {
+        [self.navigationController popToViewController: viewController animated:YES];
+    }
 }
+
 
 
 @end
