@@ -24,6 +24,11 @@
     return self;
 }
 
+-(void) setDel: (id) del
+{
+    self.delegate = del;
+}
+
 - (void)setTaskItem:(id)newDetailItem
 {
     if (_taskItem != newDetailItem)
@@ -72,6 +77,7 @@
         Task *element = [[Task alloc] init];
         element = _taskItem;
         [[segue destinationViewController] setTaskItem: element];
+        [[segue destinationViewController] setDelegate: self.delegate];
     }
 }
 @end
