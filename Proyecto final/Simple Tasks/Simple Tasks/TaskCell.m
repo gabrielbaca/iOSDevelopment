@@ -31,4 +31,16 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)cellActionDone:(id)sender {
+    if(!checked)
+    {
+        [self.cellDone setImage:[UIImage imageNamed:@"checkbox-checked.png"] forState:UIControlStateNormal];
+        checked = YES;
+    }
+    else if(checked)
+    {
+        [self.cellDone setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
+        checked = NO;
+    }
+}
 @end

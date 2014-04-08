@@ -64,13 +64,20 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="checkbox-pressed.png" offImage="checkbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-BO-Ro9">
-                                            <rect key="frame" x="5" y="23" width="51" height="31"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJv-Vn-lie">
+                                            <rect key="frame" x="20" y="29" width="16" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </switch>
+                                            <state key="normal" image="checkbox.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cellActionDone:" destination="lhc-oz-KtD" eventType="touchUpInside" id="eFD-8i-1yv"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellDone" destination="xJv-Vn-lie" id="vDg-qz-7dH"/>
                                     <outlet property="cellDueDate" destination="wjA-XM-fcW" id="vMq-bc-kZi"/>
                                     <outlet property="cellTitle" destination="jDU-uB-yXk" id="MFz-uU-8tq"/>
                                     <segue destination="GYH-fe-mlU" kind="push" identifier="detailSegue" id="bc3-sB-1Dd"/>
@@ -274,7 +281,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="checkbox-pressed.png" width="16" height="16"/>
         <image name="checkbox.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
