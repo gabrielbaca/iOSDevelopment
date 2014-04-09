@@ -18,4 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *taskDueDateField;
 @property (nonatomic, strong) Task *taskItem;
 @property (strong, nonatomic) id taskTitle;
+@property (strong, nonatomic) id delegate;
+
+-(void) setDel: (id) del;
 @end

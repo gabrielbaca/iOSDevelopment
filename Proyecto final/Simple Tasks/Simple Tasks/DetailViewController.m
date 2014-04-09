@@ -24,6 +24,11 @@
     return self;
 }
 
+-(void) setDel: (id) del
+{
+    self.delegate = del;
+}
+
 - (void)setTaskItem:(id)newDetailItem
 {
     if (_taskItem != newDetailItem)

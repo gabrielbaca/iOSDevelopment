@@ -35,7 +35,7 @@
     {
         _tasks = [[NSMutableArray alloc] init];
     }
-    [_tasks insertObject: task atIndex: arrayIndex];
+    [_tasks replaceObjectAtIndex: arrayIndex withObject: task];
     [self.tableView reloadData];
 }
 
@@ -71,6 +71,7 @@
 
     Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
      _tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
+    
     [self.tableView reloadData];
     
 }
@@ -159,6 +160,7 @@
         Task *element = _tasks[indexPath.row];
         cellIndex = indexPath.row;
         [[segue destinationViewController] setTaskItem: element];
+        [[segue destinationViewController] setDel: self];
     }
     else
     {
