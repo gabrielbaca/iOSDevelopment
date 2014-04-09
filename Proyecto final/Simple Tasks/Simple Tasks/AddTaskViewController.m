@@ -41,7 +41,7 @@
         self.navigationItem.title = self.taskItem.taskTitle;
         self.taskTitleField.text = self.taskItem.taskTitle;
         self.taskDescriptionField.text = self.taskItem.taskDescription;
-        self.taskDueDateField.date = self.taskDueDateField.date;
+        self.taskDueDateField.date = self.taskItem.taskDueDate;
     }
 }
 - (void)viewDidLoad
