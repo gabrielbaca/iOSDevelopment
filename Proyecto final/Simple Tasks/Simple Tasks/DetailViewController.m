@@ -72,6 +72,7 @@
         Task *element = [[Task alloc] init];
         element = _taskItem;
         [[segue destinationViewController] setTaskItem: element];
+        [[segue destinationViewController] setDelegate: self.navigationController.presentingViewController];
     }
 }
 @end
