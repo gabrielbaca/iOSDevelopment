@@ -223,11 +223,11 @@
 		219DB3B5190646DC00D88BAD /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				2111613F18E0070D00BC67B8 /* TaskTableViewController.h */,
 				21EC715818E94311002B7E14 /* AddTaskViewController.h */,
 				21EC715918E94311002B7E14 /* AddTaskViewController.m */,
 				2111614218E0072800BC67B8 /* DetailViewController.h */,
 				2111614318E0072800BC67B8 /* DetailViewController.m */,
+				2111613F18E0070D00BC67B8 /* TaskTableViewController.h */,
 				2111614018E0070D00BC67B8 /* TaskTableViewController.m */,
 			);
 			name = Task;

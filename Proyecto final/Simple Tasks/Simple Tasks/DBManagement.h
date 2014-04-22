@@ -34,7 +34,7 @@
 // Método para insertar datos a la base de datos
 - (void) addTaskList: (id) taskListInfo tasks: (NSArray *) myTasks;
 //- (void)insertarMateria:(id) datosMateria libros: (NSArray *) misLibros;
-- (void) insertTask: (id) taskInfo taskList: (TaskList *) newTaskList;
+- (void) addTask: (id) taskInfo taskList: (TaskList *) newTaskList;
 //- (void)insertarLibro:(id) datosLibro materia: (Materia *) nuevaMateria;
 
 // Method to obtain info from DB

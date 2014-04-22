@@ -12,7 +12,7 @@
 
 @interface TaskTableViewController ()
 {
-    NSMutableArray *_tasks;
+    NSMutableArray *tasks;
 }
 - (void)configureView;
 @end
@@ -21,21 +21,21 @@
 
 - (void) addTask: (id) task
 {
-    if(!_tasks)
+    if(!tasks)
     {
-        _tasks = [[NSMutableArray alloc] init];
+        tasks = [[NSMutableArray alloc] init];
     }
-    [_tasks insertObject: task atIndex: 0];
+    [tasks insertObject: task atIndex: 0];
     [self.tableView reloadData];
 }
 
 - (void) modTask: (id) task atIndex: (NSUInteger) arrayIndex
 {
-    if(!_tasks)
+    if(!tasks)
     {
-        _tasks = [[NSMutableArray alloc] init];
+        tasks = [[NSMutableArray alloc] init];
     }
-    [_tasks replaceObjectAtIndex: arrayIndex withObject: task];
+    [tasks replaceObjectAtIndex: arrayIndex withObject: task];
     [self.tableView reloadData];
 }
 
@@ -72,6 +72,9 @@
     //Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
     //_tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
     
+    DBManagement *services = [DBManagement instance];
+    tasks = services.taskArray;
+    
     [self.tableView reloadData];
     
 }
@@ -93,14 +96,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _tasks.count;
+    return tasks.count;
 }
 
 
 - (TaskCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
-    Task *tempTask = _tasks[indexPath.row];
+    Task *tempTask = tasks[indexPath.row];
     //tempTask.taskDueDate = [NSDate date];
     cell.cellTitle.text = tempTask.taskTitle;
     cell.cellDueDate.text = [tempTask formatDate];
@@ -123,7 +126,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [_tasks removeObjectAtIndex:indexPath.row];
+        [tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -157,7 +160,7 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"detailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Task *element = _tasks[indexPath.row];
+        Task *element = tasks[indexPath.row];
         cellIndex = indexPath.row;
         [[segue destinationViewController] setTaskItem: element];
         [[segue destinationViewController] setDel: self];

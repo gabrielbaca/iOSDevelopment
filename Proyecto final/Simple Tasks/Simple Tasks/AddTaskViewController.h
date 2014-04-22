@@ -19,12 +19,12 @@
 #import "Task.h"
 #import "TaskTableViewController.h"
 
-
 @interface AddTaskViewController : UIViewController
 @property (nonatomic, strong) id <AddTaskProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UIDatePicker *taskDueDateField;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
 @property (weak, nonatomic) IBOutlet UITextField *taskTitleField;
+@property (nonatomic, strong) TaskList *parentTaskList;
 @property (strong, nonatomic) id taskTitle;
 @property (nonatomic, strong) Task *taskItem;
 - (IBAction)donePressed:(id)sender;

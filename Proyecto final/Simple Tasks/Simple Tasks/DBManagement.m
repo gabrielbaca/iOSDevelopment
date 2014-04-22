@@ -195,7 +195,7 @@
 }
 
 // Método para insertar un registro de libro en la base de datos
-- (void) insertTask: (id) taskInfo taskList: (TaskList *) newTaskList
+- (void) addTask: (id) taskInfo taskList: (TaskList *) newTaskList
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     NSDictionary *myTask = (NSDictionary *) taskInfo;
