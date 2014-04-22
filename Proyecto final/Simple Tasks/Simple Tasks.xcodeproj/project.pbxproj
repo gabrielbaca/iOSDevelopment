@@ -29,7 +29,8 @@
 		211A348A18F29EDC00415358 /* checkbox-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348718F29EDC00415358 /* checkbox-pressed.png */; };
 		211A348B18F29EDC00415358 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348818F29EDC00415358 /* checkbox.png */; };
 		2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E2FD18E01FFE00B303F9 /* TaskCell.m */; };
-		2132E30118E0211B00B303F9 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E30018E0211B00B303F9 /* Task.m */; };
+		219DB3AC190616ED00D88BAD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 219DB3AB190616ED00D88BAD /* Task.m */; };
+		219DB3AF190616ED00D88BAD /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 219DB3AE190616ED00D88BAD /* TaskList.m */; };
 		21EC715A18E94311002B7E14 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EC715918E94311002B7E14 /* AddTaskViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +74,10 @@
 		211A348818F29EDC00415358 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		2132E2FC18E01FFE00B303F9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		2132E2FD18E01FFE00B303F9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
-		2132E2FF18E0211B00B303F9 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		2132E30018E0211B00B303F9 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		219DB3AA190616ED00D88BAD /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		219DB3AB190616ED00D88BAD /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		219DB3AD190616ED00D88BAD /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
+		219DB3AE190616ED00D88BAD /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
 		21EC715818E94311002B7E14 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
 		21EC715918E94311002B7E14 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +142,7 @@
 		2111610918DFFA2100BC67B8 /* Simple Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				219DB3B019062DF000D88BAD /* Classes */,
 				211A348C18F29EE900415358 /* Images */,
 				2111611218DFFA2100BC67B8 /* AppDelegate.h */,
 				2111611318DFFA2100BC67B8 /* AppDelegate.m */,
@@ -147,8 +151,6 @@
 				2111613D18E006B500BC67B8 /* TaskListTableViewController.m */,
 				2111613F18E0070D00BC67B8 /* TaskTableViewController.h */,
 				2111614018E0070D00BC67B8 /* TaskTableViewController.m */,
-				2132E2FF18E0211B00B303F9 /* Task.h */,
-				2132E30018E0211B00B303F9 /* Task.m */,
 				2132E2FC18E01FFE00B303F9 /* TaskCell.h */,
 				2132E2FD18E01FFE00B303F9 /* TaskCell.m */,
 				21EC715818E94311002B7E14 /* AddTaskViewController.h */,
@@ -198,6 +200,17 @@
 				211A348818F29EDC00415358 /* checkbox.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		219DB3B019062DF000D88BAD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				219DB3AD190616ED00D88BAD /* TaskList.h */,
+				219DB3AE190616ED00D88BAD /* TaskList.m */,
+				219DB3AA190616ED00D88BAD /* Task.h */,
+				219DB3AB190616ED00D88BAD /* Task.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,11 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219DB3AC190616ED00D88BAD /* Task.m in Sources */,
 				2111611418DFFA2100BC67B8 /* AppDelegate.m in Sources */,
 				2111611718DFFA2100BC67B8 /* Simple_Tasks.xcdatamodeld in Sources */,
 				2111614118E0070D00BC67B8 /* TaskTableViewController.m in Sources */,
 				2111613E18E006B500BC67B8 /* TaskListTableViewController.m in Sources */,
-				2132E30118E0211B00B303F9 /* Task.m in Sources */,
+				219DB3AF190616ED00D88BAD /* TaskList.m in Sources */,
 				2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */,
 				2111611018DFFA2100BC67B8 /* main.m in Sources */,
 				21EC715A18E94311002B7E14 /* AddTaskViewController.m in Sources */,

@@ -102,6 +102,9 @@
     else if(![self.taskTitleField.text isEqualToString: @""] && self.taskItem)
     {
         Task *tmp = [[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
+        tmp.taskTitle = self.taskTitleField.text;
+        tmp.taskDescription = self.taskDescriptionField.text;
+        tmp.taskDueDate = self.taskDueDateField.date;
         NSUInteger modIndex = cellIndex;
         [self.delegate modTask:tmp atIndex: modIndex];
         [self.delegate removeView: 1];

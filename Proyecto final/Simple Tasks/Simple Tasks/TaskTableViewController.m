@@ -69,8 +69,8 @@
 {
     [super viewDidLoad];
 
-    Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
-     _tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
+    //Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
+    //_tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
     
     [self.tableView reloadData];
     
