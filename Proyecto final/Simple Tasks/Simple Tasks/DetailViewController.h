@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBManagement.h"
 #import "AppDelegate.h"
 #import "Task.h"
 #import "TaskTableViewController.h"

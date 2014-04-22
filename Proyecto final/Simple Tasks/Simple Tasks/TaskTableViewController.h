@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AddTaskViewController.h"
 #import "DetailViewController.h"
+#import "DBManagement.h"
 
 NSUInteger cellIndex;
 

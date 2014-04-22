@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBManagement.h"
 
 @protocol AddTaskProtocol <NSObject>
 @required

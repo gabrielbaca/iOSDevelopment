@@ -21,5 +21,13 @@
 
 - (id) initWithTitle: (NSString *) title description: (NSString *) desc dueDate: (NSDate *) date;
 - (NSString *) formatDate;
+@end
+
+@interface Task (CoreDataGeneratedAccessors)
+
+- (void)addTaskListRelObject:(NSManagedObject *)value;
+- (void)removeTaskListRelObject:(NSManagedObject *)value;
+- (void)addTaskListRel:(NSSet *)values;
+- (void)removeTaskListRel:(NSSet *)values;
 
 @end

@@ -10,7 +10,7 @@
 #import "TaskTableViewController.h"
 @interface TaskListTableViewController ()
 {
-    NSMutableArray *_taskLists;
+    NSMutableArray *taskLists;
 }
 @end
 
@@ -36,6 +36,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    DBManagement *services = [DBManagement instance];
+    taskLists = services.taskListArray;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +50,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        [_taskLists insertObject: [alertView textFieldAtIndex:0].text atIndex:0];
+        [taskLists insertObject: [alertView textFieldAtIndex:0].text atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
@@ -54,8 +58,8 @@
 
 -(void) insertNewObject: (id) sender
 {
-    if (!_taskLists) {
-        _taskLists = [[NSMutableArray alloc] init];
+    if (!taskLists) {
+        taskLists = [[NSMutableArray alloc] init];
     }
     UIAlertView *titlePrompt = [[UIAlertView alloc] initWithTitle:@"Task list title" message:@"Insert task list title" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
     [titlePrompt setAlertViewStyle:UIAlertViewStylePlainTextInput];
@@ -73,14 +77,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _taskLists.count;
+    return taskLists.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString *title = _taskLists[indexPath.row];
+    NSString *title = taskLists[indexPath.row];
     cell.textLabel.text = title;
     
     return cell;
@@ -103,7 +107,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [_taskLists removeObjectAtIndex:indexPath.row];
+        [taskLists removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -135,7 +139,7 @@
 {
     if ([[segue identifier] isEqualToString:@"taskSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *element = _taskLists[indexPath.row];
+        NSString *element = taskLists[indexPath.row];
         [[segue destinationViewController] setTaskListTitle: element];
     }
 }
