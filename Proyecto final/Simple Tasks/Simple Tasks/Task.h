@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "TaskList.h"
 
-//@class UIViewController;
+@class TaskList;
 
 @interface Task : NSManagedObject
 

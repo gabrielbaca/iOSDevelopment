@@ -68,9 +68,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //Task *task1 = [[Task alloc] initWithTitle:@"Test" description:@"Desc test" dueDate: [NSDate date]];
-    //_tasks = [[NSMutableArray alloc] initWithObjects: task1, nil];
     
     DBManagement *services = [DBManagement instance];
     tasks = services.taskArray;
