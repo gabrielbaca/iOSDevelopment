@@ -48,7 +48,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
     if (buttonIndex == 1) {
         [taskLists insertObject: [alertView textFieldAtIndex:0].text atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -62,7 +62,7 @@
         taskLists = [[NSMutableArray alloc] init];
     }
     UIAlertView *titlePrompt = [[UIAlertView alloc] initWithTitle:@"Task list title" message:@"Insert task list title" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
-    [titlePrompt setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [titlePrompt setAlertViewStyle: UIAlertViewStylePlainTextInput];
     [titlePrompt show];
 }
 
@@ -84,8 +84,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString *title = taskLists[indexPath.row];
-    cell.textLabel.text = title;
+    
+    NSDictionary *dic = [taskLists objectAtIndex: indexPath.row];
+    //NSString *title = taskLists[indexPath.row];
+    cell.textLabel.text = [dic objectForKey:@"title"];
     
     return cell;
 }

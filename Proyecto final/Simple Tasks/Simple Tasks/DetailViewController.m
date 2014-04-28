@@ -46,7 +46,16 @@
     if (self.taskItem) {
         self.taskTitleField.text = self.taskItem.taskTitle;
         self.taskDescriptionField.text = self.taskItem.taskDescription;
-        self.taskDueDateField.text = [self.taskItem formatDate];
+        
+        /*-----------------------------------------------------------------------*/
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat: @"dd/MM/yyyy"];
+        NSString *tempString = [formatter stringFromDate: self.taskItem.taskDueDate];
+        
+        /*-----------------------------------------------------------------------*/
+        
+        self.taskDueDateField.text = tempString;
         self.navigationItem.title = self.taskItem.taskTitle;
     }
 }

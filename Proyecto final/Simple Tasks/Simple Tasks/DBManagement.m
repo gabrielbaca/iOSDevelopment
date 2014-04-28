@@ -127,13 +127,13 @@
     if ((self = [super init]))
     {
         // Se inicializan variables globales
-        [self setTaskArray:[[NSMutableArray alloc] init ]];
-        [self setTaskListArray:[[NSMutableArray alloc] init ]];
+        [self setTaskArray: [[NSMutableArray alloc] init]];
+        [self setTaskListArray: [[NSMutableArray alloc] init]];
     }
     return self;
 }
 
-+ (DBManagement *)instance
++ (DBManagement *) instance
 {
     // Crea la instancia persistente.
     static DBManagement *_default = nil;
@@ -258,10 +258,10 @@
     
     // Se especifica el orden en que se quiere que ordene los registros
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"taskDueDate" ascending:YES];
-    [request setSortDescriptors:[[NSArray alloc] initWithObjects: sortDescriptor, nil]];
+    [request setSortDescriptors: [[NSArray alloc] initWithObjects: sortDescriptor, nil]];
     NSError *error;
     NSArray *data;
-    data = (NSMutableArray *)[context executeFetchRequest:request error:&error];
+    data = (NSMutableArray *) [context executeFetchRequest:request error:&error];
     if ([data count] == 0)
     {
         NSLog (@"No existen tareas que cargar");
@@ -272,6 +272,24 @@
     }
 }
 
+- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", title, @"(taskDueDate == %@)", dueDate];
+    [request setPredicate: predicate];
+    
+    NSError *error;
+    NSArray *data;
+    
+    data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
+    
+}
 
 
 @end

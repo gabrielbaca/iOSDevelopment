@@ -12,6 +12,7 @@
 
 @implementation Task
 
+@dynamic taskDone;
 @dynamic taskDescription;
 @dynamic taskDueDate;
 @dynamic taskTitle;

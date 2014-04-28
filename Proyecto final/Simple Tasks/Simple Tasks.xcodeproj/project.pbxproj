@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210744EA190E37520020E342 /* Simple_Tasks 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simple_Tasks 2.xcdatamodel"; sourceTree = "<group>"; };
 		211160FE18DFFA2100BC67B8 /* Simple Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Tasks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2111610118DFFA2100BC67B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2111610318DFFA2100BC67B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -564,6 +565,7 @@
 		2111611518DFFA2100BC67B8 /* Simple_Tasks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				210744EA190E37520020E342 /* Simple_Tasks 2.xcdatamodel */,
 				2111611618DFFA2100BC67B8 /* Simple_Tasks.xcdatamodel */,
 			);
 			currentVersion = 2111611618DFFA2100BC67B8 /* Simple_Tasks.xcdatamodel */;

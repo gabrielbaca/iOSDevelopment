@@ -46,4 +46,8 @@
 // Método para  obtener datos de un libro
 //-(id) buscarLibro: (NSString *) isbn;
 //-(NSArray*) buscarLibrosMateria: (NSString *) clave;
+
+- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate;
+- (void) modifyTaskList: (NSString *) title;
+
 @end

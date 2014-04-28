@@ -103,10 +103,18 @@
 - (TaskCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
-    Task *tempTask = tasks[indexPath.row];
-    //tempTask.taskDueDate = [NSDate date];
-    cell.cellTitle.text = tempTask.taskTitle;
-    cell.cellDueDate.text = [tempTask formatDate];
+    NSDictionary *dic = [tasks objectAtIndex: indexPath.row];
+    cell.cellTitle.text = [dic objectForKey: @"taskTitle"];
+    
+    /*-----------------------------------------------------------------------*/
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"dd/MM/yyyy"];
+    NSString *tempString = [formatter stringFromDate: [dic objectForKey:@"taskDueDate"]];
+    
+    /*-----------------------------------------------------------------------*/
+    
+    cell.cellDueDate.text = tempString;
     return cell;
 }
 

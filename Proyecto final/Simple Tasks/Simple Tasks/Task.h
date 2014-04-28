@@ -14,6 +14,7 @@
 
 @interface Task : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * taskDone;
 @property (nonatomic, retain) NSString * taskDescription;
 @property (nonatomic, retain) NSDate * taskDueDate;
 @property (nonatomic, retain) NSString * taskTitle;
@@ -25,8 +26,8 @@
 
 @interface Task (CoreDataGeneratedAccessors)
 
-- (void)addTaskListRelObject:(NSManagedObject *)value;
-- (void)removeTaskListRelObject:(NSManagedObject *)value;
+- (void)addTaskListRelObject:(NSManagedObject *) value;
+- (void)removeTaskListRelObject:(NSManagedObject *) value;
 - (void)addTaskListRel:(NSSet *)values;
 - (void)removeTaskListRel:(NSSet *)values;
 

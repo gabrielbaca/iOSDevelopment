@@ -97,14 +97,20 @@
     
     if (![self.taskTitleField.text isEqualToString: @""] && !self.taskItem)
     {
-        Task *tmp = [[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
+        Task *tmp = [[Task alloc] init];
+        //[[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
+        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField, @"taskTitle", self.taskDescriptionField, @"taskDescription", self.taskDueDateField, @"taskDueDate", nil];
+        
+#warning - Task list should not be nil
+        [services addTask: aTask taskList: nil];
         [self.delegate addTask: tmp];
 #warning - Task List pending [services addTask: tmp taskList: parentTaskList ];
         [self.delegate removeView: 0];
     }
     else if(![self.taskTitleField.text isEqualToString: @""] && self.taskItem)
     {
-        Task *tmp = [[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
+        Task *tmp = [[Task alloc] init];
+        //[[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
         tmp.taskTitle = self.taskTitleField.text;
         tmp.taskDescription = self.taskDescriptionField.text;
         tmp.taskDueDate = self.taskDueDateField.date;
