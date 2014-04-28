@@ -205,11 +205,13 @@
     newTask.taskTitle = [myTask objectForKey:@"taskTitle"];
     newTask.taskDescription = [myTask objectForKey:@"taskDescription"];
     newTask.taskDueDate = [myTask objectForKey:@"taskDueDate"];
+    newTask.taskDone = [myTask objectForKey:@"taskDone"];
     //nuevoLibro.titulo = [miLibro objectForKey:@"titulo"];
     //nuevoLibro.isbn = [miLibro objectForKey:@"isbn"];
     if (newTaskList)
     {
-        [newTask addTaskListRel: newTaskList];
+#warning - (NSSet*) <> (TaskList*)
+        [newTask addTaskListRel: (NSSet *) newTaskList];
     }
     
     // Save the context.
@@ -272,7 +274,7 @@
     }
 }
 
-- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate
+- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate newTitle: (NSString *) newTitle newDueDate: (NSDate *) newDueDate newDescription: (NSString *) newDescription
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     
@@ -285,11 +287,65 @@
     [request setPredicate: predicate];
     
     NSError *error;
-    NSArray *data;
+    //NSArray *data;
     
-    data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
+    //data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
+    
+    Task *aTask = [[context executeFetchRequest: request error: &error] objectAtIndex: 0];
+    aTask.taskTitle = newTitle;
+    aTask.taskDescription = newDescription;
+    aTask.taskDueDate = newDueDate;
+    
+    [self.managedObjectContext save: &error];
     
 }
+
+- (void) modifyTaskList:(NSString *) title newTitle: (NSString *) newTitle
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"TaskList" inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(title == %@)", title];
+    [request setPredicate: predicate];
+    
+    NSError *error;
+    //NSArray *data;
+    
+    //data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
+    
+    TaskList *aTaskList = [[context executeFetchRequest: request error: &error] objectAtIndex: 0];
+    aTaskList.title = newTitle;
+    
+    [self.managedObjectContext save: &error];
+    
+}
+
+- (id) searchTaskList: (NSString *) title
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"TaskList" inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(title == %@)", title];
+    [request setPredicate: predicate];
+    
+    NSError *error;
+    //NSArray *data;
+    
+    //data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
+    
+    TaskList *aTaskList = [[context executeFetchRequest: request error: &error] objectAtIndex: 0];
+
+    return aTaskList;
+}
+
 
 
 @end

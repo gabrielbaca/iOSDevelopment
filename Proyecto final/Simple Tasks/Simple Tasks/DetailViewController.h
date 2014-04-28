@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
 @property (weak, nonatomic) IBOutlet UILabel *taskDueDateField;
 @property (nonatomic, strong) Task *taskItem;
-@property (nonatomic, strong) TaskList *parentTaskList;
+@property (strong, nonatomic) id taskListTitle;
 @property (strong, nonatomic) id taskTitle;
 @property (strong, nonatomic) id delegate;
 

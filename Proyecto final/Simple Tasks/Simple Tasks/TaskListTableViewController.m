@@ -50,7 +50,10 @@
 
 - (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
     if (buttonIndex == 1) {
-        [taskLists insertObject: [alertView textFieldAtIndex:0].text atIndex:0];
+        NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[alertView textFieldAtIndex:0].text, @"title" , nil];
+        DBManagement *services = [DBManagement instance];
+        [services addTaskList: dic tasks: nil];
+        [taskLists insertObject: dic atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
@@ -141,7 +144,8 @@
 {
     if ([[segue identifier] isEqualToString:@"taskSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *element = taskLists[indexPath.row];
+        NSDictionary *dic = [taskLists objectAtIndex:indexPath.row];
+        NSString *element = [dic objectForKey: @"title"];
         [[segue destinationViewController] setTaskListTitle: element];
     }
 }

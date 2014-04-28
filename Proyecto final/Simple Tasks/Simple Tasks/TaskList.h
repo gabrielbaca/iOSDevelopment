@@ -1,5 +1,5 @@
 //
-//  UIViewController.h
+//  TaskList.h
 //  Simple Tasks
 //
 //  Created by Alejandro Baca on 4/21/14.
@@ -19,9 +19,9 @@
 
 @interface TaskList (CoreDataGeneratedAccessors)
 
-- (void)addTasksObject:(Task *)value;
-- (void)removeTasksObject:(Task *)value;
-- (void)addTasks:(NSSet *)values;
-- (void)removeTasks:(NSSet *)values;
+- (void)addTasksObject: (Task *)value;
+- (void)removeTasksObject: (Task *)value;
+- (void)addTasks: (NSSet *)values;
+- (void)removeTasks: (NSSet *)values;
 
 @end

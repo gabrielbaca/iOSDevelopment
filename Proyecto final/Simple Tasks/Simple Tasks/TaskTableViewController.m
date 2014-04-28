@@ -168,15 +168,17 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"detailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Task *element = tasks[indexPath.row];
+        Task *element = [tasks objectAtIndex: indexPath.row];
         cellIndex = indexPath.row;
         [[segue destinationViewController] setTaskItem: element];
         [[segue destinationViewController] setDel: self];
+        [[segue destinationViewController] setTaskListTitle: _taskListTitle];
     }
     else
     {
         if ([[segue identifier] isEqualToString:@"addSegue"]) {
             [[segue destinationViewController] setDelegate:self];
+            [[segue destinationViewController] setTaskListTitle: _taskListTitle];
         }
     }
 }

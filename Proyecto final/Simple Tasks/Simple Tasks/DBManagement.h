@@ -47,7 +47,8 @@
 //-(id) buscarLibro: (NSString *) isbn;
 //-(NSArray*) buscarLibrosMateria: (NSString *) clave;
 
-- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate;
-- (void) modifyTaskList: (NSString *) title;
+- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate newTitle: (NSString *) newTitle newDueDate: (NSDate *) newDueDate newDescription: (NSString *) newDescription;
+- (void) modifyTaskList:(NSString *) title newTitle: (NSString *) newTitle;
+- (id) searchTaskList: (NSString *) title;
 
 @end

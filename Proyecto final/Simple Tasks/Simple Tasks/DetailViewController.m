@@ -29,6 +29,16 @@
     self.delegate = del;
 }
 
+- (void)setTaskListTitle:(id)newDetailItem
+{
+    if (_taskListTitle != newDetailItem) {
+        _taskListTitle = newDetailItem;
+        
+        // Update the view.
+        [self configureView];
+    }
+}
+
 - (void)setTaskItem:(id)newDetailItem
 {
     if (_taskItem != newDetailItem)
@@ -87,6 +97,7 @@
         element = _taskItem;
         [[segue destinationViewController] setTaskItem: element];
         [[segue destinationViewController] setDelegate: self.delegate];
+        [[segue destinationViewController] setTaskListTitle: _taskListTitle];
     }
 }
 @end

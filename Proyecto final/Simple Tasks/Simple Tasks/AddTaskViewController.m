@@ -10,6 +10,9 @@
 @interface AddTaskViewController ()
 {
     UITapGestureRecognizer *tapRecognizer;
+    NSString *tempTitle;
+    NSString *tempDescription;
+    NSString *tempDueDate;
 }
 @end
 
@@ -22,6 +25,16 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)setTaskListTitle:(id)newDetailItem
+{
+    if (_taskListTitle != newDetailItem) {
+        _taskListTitle = newDetailItem;
+        
+        // Update the view.
+        [self configureView];
+    }
 }
 
 - (void)setTaskItem:(id)newDetailItem
@@ -97,26 +110,20 @@
     
     if (![self.taskTitleField.text isEqualToString: @""] && !self.taskItem)
     {
-        Task *tmp = [[Task alloc] init];
         //[[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
-        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField, @"taskTitle", self.taskDescriptionField, @"taskDescription", self.taskDueDateField, @"taskDueDate", nil];
-        
-#warning - Task list should not be nil
-        [services addTask: aTask taskList: nil];
-        [self.delegate addTask: tmp];
-#warning - Task List pending [services addTask: tmp taskList: parentTaskList ];
+        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField.text, @"taskTitle", self.taskDescriptionField.text, @"taskDescription", self.taskDueDateField.date, @"taskDueDate", nil];
+        TaskList *myTaskList = [services searchTaskList: _taskListTitle];
+        [services addTask: aTask taskList: myTaskList];
+        [self.delegate addTask: aTask];
         [self.delegate removeView: 0];
     }
     else if(![self.taskTitleField.text isEqualToString: @""] && self.taskItem)
     {
-        Task *tmp = [[Task alloc] init];
         //[[Task alloc] initWithTitle: self.taskTitleField.text description: self.taskDescriptionField.text dueDate:self.taskDueDateField.date];
-        tmp.taskTitle = self.taskTitleField.text;
-        tmp.taskDescription = self.taskDescriptionField.text;
-        tmp.taskDueDate = self.taskDueDateField.date;
         NSUInteger modIndex = cellIndex;
-#warning - ¿Es necesario buscar en la base de datos?
-        [self.delegate modTask: tmp atIndex: modIndex];
+        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField.text, @"taskTitle", self.taskDescriptionField.text, @"taskDescription", self.taskDueDateField.date, @"taskDueDate", nil];
+        [services modifyTask:self.taskItem.taskTitle dueDate: self.taskItem.taskDueDate newTitle: self.taskTitleField.text newDueDate: self.taskDueDateField.date newDescription: self.taskDescriptionField.text];
+        [self.delegate modTask: aTask atIndex: modIndex];
         [self.delegate removeView: 1];
     }
     else
