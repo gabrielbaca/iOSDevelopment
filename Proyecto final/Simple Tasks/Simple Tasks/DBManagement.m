@@ -210,8 +210,7 @@
     //nuevoLibro.isbn = [miLibro objectForKey:@"isbn"];
     if (newTaskList)
     {
-#warning - (NSSet*) <> (TaskList*)
-        [newTask addTaskListRel: (NSSet *) newTaskList];
+        [newTask addTaskListRelObject: newTaskList];
     }
     
     // Save the context.
