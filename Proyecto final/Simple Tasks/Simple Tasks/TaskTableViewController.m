@@ -69,6 +69,15 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
+    if([services loadTasks: [services searchTaskList: _taskListTitle]])
+    {
+        tasks = services.taskArray;
+    }
+    else
+    {
+        [tasks removeAllObjects];
+    }
+    [self.tableView reloadData];
     
 }
 
@@ -84,8 +93,6 @@
     {
         [tasks removeAllObjects];
     }
-    //tasks = services.taskArray;
-    //[services clearTaskArray];
     [self.tableView reloadData];
     
 }
@@ -145,6 +152,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [services deleteTask: [tasks objectAtIndex: indexPath.row] parentTaskList: _taskListTitle];
         [tasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -197,7 +205,8 @@
 - (void) removeView: (int) index
 {
     UIViewController * viewController = [self.navigationController.viewControllers objectAtIndex:1];
-    if (index == 0) {
+    if (index == 0)
+    {
         [self.navigationController popViewControllerAnimated:YES];
     }
     else if (index == 1)

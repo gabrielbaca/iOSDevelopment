@@ -31,22 +31,18 @@
 
 #pragma mark - Instance methods
 
-// Método para insertar datos a la base de datos
-- (void) addTaskList: (id) taskListInfo tasks: (NSArray *) myTasks;
+// Task
 - (void) addTask: (id) taskInfo taskList: (TaskList *) newTaskList;
-
-// Method to obtain info from DB
-- (void) loadTaskLists;
 - (void) clearTaskArray;
 - (BOOL) loadTasks: (TaskList *) taskList;
+- (void) modifyTask: (id) currentTask newTask: (id) modifiedTask taskListTitle: (NSString *) title;
+-(void) deleteTask:(id) taskToBeDeleted parentTaskList: (NSString *) taskListTitle;
 
-
-// Método para  obtener datos de un libro
-//-(id) buscarLibro: (NSString *) isbn;
-//-(NSArray*) buscarLibrosMateria: (NSString *) clave;
-
-- (void) modifyTask: (NSString *) title dueDate: (NSDate *) dueDate newTitle: (NSString *) newTitle newDueDate: (NSDate *) newDueDate newDescription: (NSString *) newDescription;
+// Task List
+- (void) addTaskList: (id) taskListInfo tasks: (NSArray *) myTasks;
+- (void) loadTaskLists;
 - (void) modifyTaskList:(NSString *) title newTitle: (NSString *) newTitle;
 - (id) searchTaskList: (NSString *) title;
+- (void) deleteTaskList: (NSString *) taskListToBeDeleted;
 
 @end

@@ -11,6 +11,7 @@
 @interface TaskListTableViewController ()
 {
     NSMutableArray *taskListsArray;
+    DBManagement *services;
 }
 @end
 
@@ -37,7 +38,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
-    DBManagement *services = [DBManagement instance];
+    services = [DBManagement instance];
     taskListsArray = services.taskListArray;
     
 }
@@ -51,7 +52,6 @@
 - (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
     if (buttonIndex == 1) {
         NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[alertView textFieldAtIndex:0].text, @"title" , nil];
-        DBManagement *services = [DBManagement instance];
         [services addTaskList: dic tasks: nil];
         [taskListsArray insertObject: dic atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -112,6 +112,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        NSString *taskListDeletion = [[taskListsArray objectAtIndex: indexPath.row] valueForKey:@"title"];
+        [services deleteTaskList: taskListDeletion];
         [taskListsArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
