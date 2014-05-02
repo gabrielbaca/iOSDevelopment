@@ -54,19 +54,19 @@
     // Update the user interface for the detail item.
     
     if (self.taskItem) {
-        self.taskTitleField.text = self.taskItem.taskTitle;
-        self.taskDescriptionField.text = self.taskItem.taskDescription;
+        self.taskTitleField.text = [self.taskItem valueForKey:@"taskTitle"];//self.taskItem.taskTitle;
+        self.taskDescriptionField.text = [self.taskItem valueForKey:@"taskDescription"];//self.taskItem.taskDescription;
         
         /*-----------------------------------------------------------------------*/
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat: @"dd/MM/yyyy"];
-        NSString *tempString = [formatter stringFromDate: self.taskItem.taskDueDate];
+        NSString *tempString = [formatter stringFromDate: [self.taskItem valueForKey:@"taskDueDate"]];
         
         /*-----------------------------------------------------------------------*/
         
         self.taskDueDateField.text = tempString;
-        self.navigationItem.title = self.taskItem.taskTitle;
+        self.navigationItem.title = [self.taskItem valueForKey:@"taskTitle"];
     }
 }
 
@@ -93,9 +93,7 @@
     if ([[segue identifier] isEqualToString:@"editSegue"]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat: @"dd/MM/yyyy"];
-        Task *element = [[Task alloc] init];
-        element = _taskItem;
-        [[segue destinationViewController] setTaskItem: element];
+        [[segue destinationViewController] setTaskItem: self.taskItem];
         [[segue destinationViewController] setDelegate: self.delegate];
         [[segue destinationViewController] setTaskListTitle: _taskListTitle];
     }

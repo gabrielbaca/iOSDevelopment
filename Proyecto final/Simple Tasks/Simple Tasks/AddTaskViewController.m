@@ -51,10 +51,10 @@
     // Update the user interface for the detail item.
     
     if (self.taskItem) {
-        self.navigationItem.title = self.taskItem.taskTitle;
-        self.taskTitleField.text = self.taskItem.taskTitle;
-        self.taskDescriptionField.text = self.taskItem.taskDescription;
-        self.taskDueDateField.date = self.taskDueDateField.date;
+        self.navigationItem.title = [self.taskItem valueForKey:@"taskTitle"];//self.taskItem.taskTitle;
+        self.taskTitleField.text = [self.taskItem valueForKey:@"taskTitle"];//self.taskItem.taskTitle;
+        self.taskDescriptionField.text = [self.taskItem valueForKey:@"taskDescription"];//self.taskItem.taskDescription;
+        self.taskDueDateField.date = [self.taskItem valueForKey:@"taskDueDate"];//self.taskDueDateField.date;
     }
 }
 - (void)viewDidLoad
