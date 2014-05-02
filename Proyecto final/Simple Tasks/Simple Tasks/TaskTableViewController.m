@@ -13,6 +13,7 @@
 @interface TaskTableViewController ()
 {
     NSMutableArray *tasks;
+    DBManagement *services;
 }
 - (void)configureView;
 @end
@@ -65,13 +66,26 @@
     }
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    DBManagement *services = [DBManagement instance];
-    tasks = services.taskArray;
-    
+    services = [DBManagement instance];
+    if([services loadTasks: [services searchTaskList: _taskListTitle]])
+    {
+        tasks = services.taskArray;
+    }
+    else
+    {
+        [tasks removeAllObjects];
+    }
+    //tasks = services.taskArray;
+    //[services clearTaskArray];
     [self.tableView reloadData];
     
 }

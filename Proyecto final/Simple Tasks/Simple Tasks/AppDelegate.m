@@ -21,7 +21,7 @@
 //    [self.window makeKeyAndVisible];
     
     DBManagement *services = [DBManagement instance];
-    [services loadTasks];
+    //[services loadTasks];
     [services loadTaskLists];
 
     return YES;

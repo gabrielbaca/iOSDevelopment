@@ -26,8 +26,8 @@
 
 @interface Task (CoreDataGeneratedAccessors)
 
-- (void)addTaskListRelObject:(NSManagedObject *) value;
-- (void)removeTaskListRelObject:(NSManagedObject *) value;
+- (void)addTaskListRelObject: (TaskList *) value; // NSManagedObject
+- (void)removeTaskListRelObject: (TaskList *) value;
 - (void)addTaskListRel:(NSSet *)values;
 - (void)removeTaskListRel:(NSSet *)values;
 

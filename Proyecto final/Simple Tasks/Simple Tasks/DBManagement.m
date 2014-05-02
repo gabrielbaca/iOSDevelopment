@@ -171,6 +171,8 @@
 // Materia - Task List
 // Libro - Task
 
+#pragma mark - DB API
+
 // Método para insertar un registro de lista de tareas en la base de datos
 - (void) addTaskList: (id) taskListInfo tasks: (NSArray *) myTasks
 {
@@ -181,8 +183,6 @@
     TaskList *newTaskList = [NSEntityDescription insertNewObjectForEntityForName:@"TaskList"inManagedObjectContext: context];
     
     newTaskList.title = [myTaskList objectForKey: @"title"];
-    // nuevaMateria.nombre = [miMateria objectForKey:@"nombre"];
-    // nuevaMateria.clave = [miMateria objectForKey:@"clave"];
     for (int i = 0; i < myTasks.count; i++)
     {
         [newTaskList addTasksObject: myTasks[i]];
@@ -206,11 +206,11 @@
     newTask.taskDescription = [myTask objectForKey:@"taskDescription"];
     newTask.taskDueDate = [myTask objectForKey:@"taskDueDate"];
     newTask.taskDone = [myTask objectForKey:@"taskDone"];
-    //nuevoLibro.titulo = [miLibro objectForKey:@"titulo"];
-    //nuevoLibro.isbn = [miLibro objectForKey:@"isbn"];
+    
     if (newTaskList)
     {
-        [newTask addTaskListRelObject: newTaskList];
+        newTask.taskListRel = newTaskList;
+        //[newTask addTaskListRelObject: newTaskList];
     }
     
     // Save the context.
@@ -218,6 +218,11 @@
     if (![context save:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
+}
+
+- (void) clearTaskArray
+{
+    [self.taskArray removeAllObjects];
 }
 
 // Método para cargar las materias de la base de datos
@@ -248,28 +253,38 @@
 }
 
 // Método para cargar los libos de la base de datos
-- (void) loadTasks //cargarLibros
+- (BOOL) loadTasks: (TaskList *) taskList //cargarLibros
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
+    //NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
     
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Task"];
+    //[request setEntity:entityDescription];
+    
+    NSString *searchValue = [NSString stringWithFormat:@"*%@*", [taskList valueForKey:@"title"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(ANY taskListRel.title like %@)", searchValue];
+   [request setPredicate: predicate];
+    
     
     // Se especifica el orden en que se quiere que ordene los registros
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"taskDueDate" ascending:YES];
     [request setSortDescriptors: [[NSArray alloc] initWithObjects: sortDescriptor, nil]];
+    
     NSError *error;
     NSArray *data;
+    
     data = (NSMutableArray *) [context executeFetchRequest:request error:&error];
     if ([data count] == 0)
     {
         NSLog (@"No existen tareas que cargar");
+        return false;
     }
     else
     {
-        [self setTaskArray: [self convierteDiccionario: (NSMutableArray *) data]];
+        NSMutableArray *tempTaskArray = [self convierteDiccionario: (NSMutableArray *) data];
+        [self setTaskArray: tempTaskArray];
+        return true;
     }
 }
 

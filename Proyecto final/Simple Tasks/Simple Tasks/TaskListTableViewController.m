@@ -10,7 +10,7 @@
 #import "TaskTableViewController.h"
 @interface TaskListTableViewController ()
 {
-    NSMutableArray *taskLists;
+    NSMutableArray *taskListsArray;
 }
 @end
 
@@ -38,7 +38,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     DBManagement *services = [DBManagement instance];
-    taskLists = services.taskListArray;
+    taskListsArray = services.taskListArray;
     
 }
 
@@ -53,7 +53,7 @@
         NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[alertView textFieldAtIndex:0].text, @"title" , nil];
         DBManagement *services = [DBManagement instance];
         [services addTaskList: dic tasks: nil];
-        [taskLists insertObject: dic atIndex:0];
+        [taskListsArray insertObject: dic atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
@@ -61,8 +61,8 @@
 
 -(void) insertNewObject: (id) sender
 {
-    if (!taskLists) {
-        taskLists = [[NSMutableArray alloc] init];
+    if (!taskListsArray) {
+        taskListsArray = [[NSMutableArray alloc] init];
     }
     UIAlertView *titlePrompt = [[UIAlertView alloc] initWithTitle:@"Task list title" message:@"Insert task list title" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
     [titlePrompt setAlertViewStyle: UIAlertViewStylePlainTextInput];
@@ -80,7 +80,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return taskLists.count;
+    return taskListsArray.count;
 }
 
 
@@ -88,7 +88,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    NSDictionary *dic = [taskLists objectAtIndex: indexPath.row];
+    NSDictionary *dic = [taskListsArray objectAtIndex: indexPath.row];
     //NSString *title = taskLists[indexPath.row];
     cell.textLabel.text = [dic objectForKey:@"title"];
     
@@ -112,7 +112,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [taskLists removeObjectAtIndex:indexPath.row];
+        [taskListsArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -144,9 +144,8 @@
 {
     if ([[segue identifier] isEqualToString:@"taskSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *dic = [taskLists objectAtIndex:indexPath.row];
-        NSString *element = [dic objectForKey: @"title"];
-        [[segue destinationViewController] setTaskListTitle: element];
+        TaskList *taskList = [taskListsArray objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setTaskListTitle: [taskList valueForKey:@"title"]];
     }
 }
 

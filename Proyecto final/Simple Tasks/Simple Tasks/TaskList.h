@@ -19,8 +19,8 @@
 
 @interface TaskList (CoreDataGeneratedAccessors)
 
-- (void)addTasksObject: (Task *)value;
-- (void)removeTasksObject: (Task *)value;
+- (void)addTasksObject: (Task *) value;
+- (void)removeTasksObject: (Task *) value;
 - (void)addTasks: (NSSet *)values;
 - (void)removeTasks: (NSSet *)values;
 
