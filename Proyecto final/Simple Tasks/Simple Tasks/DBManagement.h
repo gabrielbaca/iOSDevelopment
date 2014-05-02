@@ -36,8 +36,9 @@
 - (void) clearTaskArray;
 - (BOOL) loadTasks: (TaskList *) taskList;
 - (void) modifyTask: (id) currentTask newTask: (id) modifiedTask taskListTitle: (NSString *) title;
--(void) deleteTask:(id) taskToBeDeleted parentTaskList: (NSString *) taskListTitle;
+- (void) deleteTask:(id) taskToBeDeleted parentTaskList: (NSString *) taskListTitle;
 - (void) setTaskCompleted: (id) currentTask taskDone: (BOOL) taskCompletion parentTaskList: (NSString *) pTaskList;
+- (int) countTasks: (NSString *) taskListTitle;
 
 // Task List
 - (void) addTaskList: (id) taskListInfo tasks: (NSArray *) myTasks;

@@ -29,6 +29,8 @@
 		211A348A18F29EDC00415358 /* checkbox-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348718F29EDC00415358 /* checkbox-pressed.png */; };
 		211A348B18F29EDC00415358 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 211A348818F29EDC00415358 /* checkbox.png */; };
 		2132E2FE18E01FFE00B303F9 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132E2FD18E01FFE00B303F9 /* TaskCell.m */; };
+		217465F91913E44A0000F4F1 /* SimpleTasksLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 217465F81913E44A0000F4F1 /* SimpleTasksLaunch.png */; };
+		217465FD1913EABD0000F4F1 /* SimpleTasksAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 217465FC1913EABD0000F4F1 /* SimpleTasksAppIcon.png */; };
 		219DB3AC190616ED00D88BAD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 219DB3AB190616ED00D88BAD /* Task.m */; };
 		219DB3AF190616ED00D88BAD /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 219DB3AE190616ED00D88BAD /* TaskList.m */; };
 		219DB3B41906444700D88BAD /* DBManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 219DB3B31906444700D88BAD /* DBManagement.m */; };
@@ -77,6 +79,8 @@
 		2132E2FC18E01FFE00B303F9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		2132E2FD18E01FFE00B303F9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		217465F21913D2C70000F4F1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		217465F81913E44A0000F4F1 /* SimpleTasksLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimpleTasksLaunch.png; sourceTree = "<group>"; };
+		217465FC1913EABD0000F4F1 /* SimpleTasksAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimpleTasksAppIcon.png; sourceTree = "<group>"; };
 		219DB3AA190616ED00D88BAD /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		219DB3AB190616ED00D88BAD /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		219DB3AD190616ED00D88BAD /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		2111610A18DFFA2100BC67B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				217465FC1913EABD0000F4F1 /* SimpleTasksAppIcon.png */,
+				217465F81913E44A0000F4F1 /* SimpleTasksLaunch.png */,
 				2111610B18DFFA2100BC67B8 /* Simple Tasks-Info.plist */,
 				2111610C18DFFA2100BC67B8 /* InfoPlist.strings */,
 				2111610F18DFFA2100BC67B8 /* main.m */,
@@ -323,9 +329,11 @@
 				2111613B18E0011B00BC67B8 /* Main.storyboard in Resources */,
 				2111610E18DFFA2100BC67B8 /* InfoPlist.strings in Resources */,
 				211A348B18F29EDC00415358 /* checkbox.png in Resources */,
+				217465FD1913EABD0000F4F1 /* SimpleTasksAppIcon.png in Resources */,
 				211A348918F29EDC00415358 /* checkbox-checked.png in Resources */,
 				2111611918DFFA2100BC67B8 /* Images.xcassets in Resources */,
 				211A348A18F29EDC00415358 /* checkbox-pressed.png in Resources */,
+				217465F91913E44A0000F4F1 /* SimpleTasksLaunch.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

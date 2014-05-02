@@ -26,6 +26,12 @@
     return self;
 }
 
+- (void) viewDidAppear: (BOOL) animated
+{
+    [super viewDidAppear: animated];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,8 +95,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSDictionary *dic = [taskListsArray objectAtIndex: indexPath.row];
-    //NSString *title = taskLists[indexPath.row];
     cell.textLabel.text = [dic objectForKey:@"title"];
+    int nTasks = [services countTasks: [dic objectForKey:@"title"]];
+    if (nTasks != 1) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d tasks", [services countTasks: [dic objectForKey:@"title"]]];
+    }
+    else
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d task", [services countTasks: [dic objectForKey:@"title"]]];
+    }
     
     return cell;
 }

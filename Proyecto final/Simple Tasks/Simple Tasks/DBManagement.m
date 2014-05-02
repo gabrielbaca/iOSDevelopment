@@ -188,7 +188,6 @@
     if (newTaskList)
     {
         newTask.taskListRel = newTaskList;
-        //[newTask addTaskListRelObject: newTaskList];
     }
     
     // Save the context.
@@ -327,6 +326,29 @@
         [context deleteObject: taskToDelete];
         [context save:&error];
     }
+}
+
+- (int) countTasks: (NSString *) taskListTitle
+{
+    TaskList *myTaskList = [self searchTaskList: taskListTitle];
+    
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"ANY taskListRel.title like %@", searchValue];
+    [request setPredicate: predicate];
+    
+    NSError *error;
+    NSMutableArray *data;
+    
+    data = [[context executeFetchRequest: request error: &error] mutableCopy];
+    
+    return data.count;
 }
 
 #pragma mark - DB API - Task List
