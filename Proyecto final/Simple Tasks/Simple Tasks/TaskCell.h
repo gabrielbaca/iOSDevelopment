@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBManagement.h"
 
 @interface TaskCell : UITableViewCell
 {
-    bool checked;
+    BOOL checked;
+    DBManagement *services;
 }
 @property (weak, nonatomic) IBOutlet UILabel *cellTitle;
 @property (weak, nonatomic) IBOutlet UILabel *cellDueDate;
 @property (weak, nonatomic) IBOutlet UIButton *cellDone;
+@property (strong, nonatomic) id taskListTitle;
 - (IBAction)cellActionDone:(id)sender;
+
+- (BOOL) readState;
+- (void) setState: (BOOL) state;
+- (void) modifyState;
 @end

@@ -198,6 +198,38 @@
     }
 }
 
+- (void) setTaskCompleted: (id) currentTask taskDone: (BOOL) taskCompletion parentTaskList: (NSString *) pTaskList
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSString *searchValue = [NSString stringWithFormat:@"*%@*", pTaskList];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
+    [request setPredicate: predicate];
+    
+    NSError *error;
+    NSMutableArray *data = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    Task *oldTask;
+    if(data.count)
+    {
+        oldTask = [data objectAtIndex: 0];
+        NSLog(@"Data was found");
+    }
+    else
+    {
+        NSLog(@"Data not found");
+    }
+    
+    oldTask.taskDone = [NSNumber numberWithBool:taskCompletion];
+    
+    [context save: &error];
+}
+
 - (void) modifyTask: (id) currentTask newTask: (id) modifiedTask taskListTitle: (NSString *) title
 {
     NSManagedObjectContext *context = self.managedObjectContext;
@@ -208,7 +240,7 @@
     [request setEntity:entityDescription];
     
     NSString *searchValue = [NSString stringWithFormat:@"*%@*", title];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title contains[cd] %@", searchValue];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
     [request setPredicate: predicate];
     
     NSError *error;
@@ -225,21 +257,7 @@
     oldTask.taskDescription = [modifiedTask objectForKey: @"taskDescription"];
     oldTask.taskDueDate = [modifiedTask objectForKey: @"taskDueDate"];
     
-    
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", title, @"(taskDueDate == %@)", dueDate];
-//    [request setPredicate: predicate];
-//    
-//    NSError *error;
-//    //NSArray *data;
-//    
-//    //data = (NSMutableArray *) [context executeFetchRequest: request error: &error];
-//    
-//    Task *aTask = [[context executeFetchRequest: request error: &error] objectAtIndex: 0];
-//    aTask.taskTitle = newTitle;
-//    aTask.taskDescription = newDescription;
-//    aTask.taskDueDate = newDueDate;
-    
-    [self.managedObjectContext save: &error];
+    [context save: &error];
 }
 
 - (BOOL) loadTasks: (TaskList *) taskList //cargarLibros
@@ -294,7 +312,7 @@
     [request setEntity:entityDescription];
     
     NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [taskToBeDeleted objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [taskToBeDeleted objectForKey: @"taskDueDate"] , @"ANY taskListRel.title contains[cd] %@", searchValue];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [taskToBeDeleted objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [taskToBeDeleted objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
     [request setPredicate: predicate];
     
     NSError *error;
@@ -388,7 +406,7 @@
     TaskList *aTaskList = [[context executeFetchRequest: request error: &error] objectAtIndex: 0];
     aTaskList.title = newTitle;
     
-    [self.managedObjectContext save: &error];
+    [context save: &error];
     
 }
 

@@ -76,6 +76,7 @@
 		211A348818F29EDC00415358 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		2132E2FC18E01FFE00B303F9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		2132E2FD18E01FFE00B303F9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		217465F21913D2C70000F4F1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		219DB3AA190616ED00D88BAD /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		219DB3AB190616ED00D88BAD /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		219DB3AD190616ED00D88BAD /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		2111610018DFFA2100BC67B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				217465F21913D2C70000F4F1 /* CoreText.framework */,
 				2111610118DFFA2100BC67B8 /* Foundation.framework */,
 				2111610318DFFA2100BC67B8 /* CoreGraphics.framework */,
 				2111610518DFFA2100BC67B8 /* UIKit.framework */,

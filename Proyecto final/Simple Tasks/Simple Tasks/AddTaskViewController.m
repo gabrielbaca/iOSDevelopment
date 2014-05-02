@@ -110,8 +110,7 @@
 {
     if (![self.taskTitleField.text isEqualToString: @""] && !self.taskItem)
     {
-        //TODO: hola
-        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField.text, @"taskTitle", self.taskDescriptionField.text, @"taskDescription", self.taskDueDateField.date, @"taskDueDate", nil];
+        NSDictionary *aTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField.text, @"taskTitle", self.taskDescriptionField.text, @"taskDescription", self.taskDueDateField.date, @"taskDueDate", [NSNumber numberWithBool: NO], @"taskDone", nil];
         TaskList *myTaskList = [services searchTaskList: _taskListTitle];
         [services addTask: aTask taskList: myTaskList];
         [self.delegate addTask: aTask];
@@ -125,7 +124,6 @@
        
         NSDictionary *modTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.taskTitleField.text, @"taskTitle", self.taskDueDateField.date, @"taskDueDate", self.taskDescriptionField.text, @"taskDescription",  nil];
         
-       // [services modifyTask: self.taskItem.taskTitle dueDate: self.taskItem.taskDueDate newTitle: self.taskTitleField.text newDueDate: self.taskDueDateField.date newDescription: self.taskDescriptionField.text];
         [services modifyTask: aTask newTask: modTask taskListTitle: _taskListTitle];
         [self.delegate modTask: aTask atIndex: modIndex];
         [self.delegate removeView: 1];

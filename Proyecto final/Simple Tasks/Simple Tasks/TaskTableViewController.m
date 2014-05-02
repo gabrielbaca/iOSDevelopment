@@ -133,6 +133,8 @@
     /*-----------------------------------------------------------------------*/
     
     cell.cellDueDate.text = tempString;
+    cell.taskListTitle = _taskListTitle;
+    [cell setState: [[dic objectForKey:@"taskDone"] boolValue]];
     return cell;
 }
 
