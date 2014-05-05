@@ -11,16 +11,17 @@
 
 @interface TaskCell : UITableViewCell
 {
-    BOOL checked;
+    //BOOL checked;
     DBManagement *services;
 }
 @property (weak, nonatomic) IBOutlet UILabel *cellTitle;
 @property (weak, nonatomic) IBOutlet UILabel *cellDueDate;
 @property (weak, nonatomic) IBOutlet UIButton *cellDone;
 @property (strong, nonatomic) id taskListTitle;
+@property (strong, nonatomic) NSNumber *checked;
 - (IBAction)cellActionDone:(id)sender;
 
-- (BOOL) readState;
-- (void) setState: (BOOL) state;
+- (NSNumber *) readState;
+- (void) setState: (NSNumber *) state;
 - (void) modifyState;
 @end

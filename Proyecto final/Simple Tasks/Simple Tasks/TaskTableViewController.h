@@ -15,5 +15,6 @@
 NSUInteger cellIndex;
 
 @interface TaskTableViewController : UITableViewController <AddTaskProtocol>
+- (IBAction) taskChecked: (id) sender;
 @property (strong, nonatomic) id taskListTitle;
 @end

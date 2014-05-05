@@ -34,46 +34,46 @@
 - (IBAction)cellActionDone:(id)sender {
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc]  initWithString: self.cellTitle.text];
     NSMutableAttributedString *dueDate = [[NSMutableAttributedString alloc]  initWithString: self.cellDueDate.text];
-    if(!checked)
+    if(!self.checked)
     {
         [self.cellDone setImage:[UIImage imageNamed:@"checkbox-checked.png"] forState:UIControlStateNormal];
-        checked = YES;
-        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range:NSMakeRange(0, [self.cellTitle.text length])];
+        self.checked = [NSNumber numberWithBool: YES];
+        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [self.cellTitle.text length])];
         
-        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range:NSMakeRange(0, [self.cellDueDate.text length])];
+        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [self.cellDueDate.text length])];
         
         [self.cellTitle setAttributedText: title];
         [self.cellDueDate setAttributedText: dueDate];
     }
-    else if(checked)
+    else if(self.checked)
     {
         [self.cellDone setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-        checked = NO;
+        self.checked = [NSNumber numberWithBool: NO];
         
-        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt: NSUnderlineStyleNone] range:NSMakeRange(0, [self.cellTitle.text length])];
+        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt: NSUnderlineStyleNone] range: NSMakeRange(0, [self.cellTitle.text length])];
         
-        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range:NSMakeRange(0, [self.cellDueDate.text length])];
+        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [self.cellDueDate.text length])];
         
         [self.cellTitle setAttributedText: title];
         [self.cellDueDate setAttributedText: dueDate];
     }
-    [self modifyState];
+    //[self modifyState];
 }
 
--(BOOL) readState
+-(NSNumber *) readState
 {
-    return checked;
+    return self.checked;
 }
 
-- (void) setState: (BOOL) state
+- (void) setState: (NSNumber *) state
 {
-    checked = state;
+    self.checked = state;
 }
 
 - (void) modifyState
 {
     NSDictionary *currentTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.cellTitle, @"taskTitle", self.cellDueDate, @"taskDueDate", nil];
-    [services setTaskCompleted: currentTask taskDone: checked parentTaskList: self.taskListTitle];
+    [services setTaskCompleted: currentTask taskDone: self.checked parentTaskList: self.taskListTitle];
 }
 @end
 

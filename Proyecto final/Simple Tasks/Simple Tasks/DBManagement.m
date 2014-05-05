@@ -197,7 +197,7 @@
     }
 }
 
-- (void) setTaskCompleted: (id) currentTask taskDone: (BOOL) taskCompletion parentTaskList: (NSString *) pTaskList
+- (void) setTaskCompleted: (id) currentTask taskDone: (NSNumber *) taskCompletion parentTaskList: (NSString *) pTaskList
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     
@@ -224,7 +224,7 @@
         NSLog(@"Data not found");
     }
     
-    oldTask.taskDone = [NSNumber numberWithBool:taskCompletion];
+    oldTask.taskDone = taskCompletion;
     
     [context save: &error];
 }

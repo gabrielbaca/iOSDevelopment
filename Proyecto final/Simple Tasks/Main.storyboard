@@ -88,6 +88,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="cellActionDone:" destination="lhc-oz-KtD" eventType="touchUpInside" id="eFD-8i-1yv"/>
+                                                <action selector="taskChecked:" destination="zJB-ag-kZY" eventType="touchUpInside" id="p02-dI-ybi"/>
                                             </connections>
                                         </button>
                                     </subviews>
