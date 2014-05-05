@@ -139,16 +139,16 @@
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc]  initWithString: [dic objectForKey: @"taskTitle"]];
     NSMutableAttributedString *dueDate = [[NSMutableAttributedString alloc]  initWithString: tempString];
     
-    if([cell readState])
-    {
-        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
-        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [tempString length])];
-    }
-    else
-    {
-        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
-        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [tempString length])];
-    }
+//    if([cell readState])
+//    {
+//        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
+//        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [tempString length])];
+//    }
+//    else
+//    {
+//        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
+//        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [tempString length])];
+//    }
     
     [cell.cellTitle setAttributedText: title];
     [cell.cellDueDate setAttributedText: dueDate];

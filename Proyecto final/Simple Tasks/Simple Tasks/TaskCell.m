@@ -34,10 +34,10 @@
 - (IBAction)cellActionDone:(id)sender {
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc]  initWithString: self.cellTitle.text];
     NSMutableAttributedString *dueDate = [[NSMutableAttributedString alloc]  initWithString: self.cellDueDate.text];
-    if(!self.checked)
+    if(!checked)
     {
         [self.cellDone setImage:[UIImage imageNamed:@"checkbox-checked.png"] forState:UIControlStateNormal];
-        self.checked = [NSNumber numberWithBool: YES];
+        checked = YES;
         [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [self.cellTitle.text length])];
         
         [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [self.cellDueDate.text length])];
@@ -45,10 +45,10 @@
         [self.cellTitle setAttributedText: title];
         [self.cellDueDate setAttributedText: dueDate];
     }
-    else if(self.checked)
+    else if(checked)
     {
         [self.cellDone setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-        self.checked = [NSNumber numberWithBool: NO];
+        checked = NO;
         
         [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt: NSUnderlineStyleNone] range: NSMakeRange(0, [self.cellTitle.text length])];
         
@@ -60,20 +60,20 @@
     //[self modifyState];
 }
 
--(NSNumber *) readState
+-(BOOL) readState
 {
-    return self.checked;
+    return checked;
 }
 
-- (void) setState: (NSNumber *) state
+- (void) setState: (BOOL) state
 {
-    self.checked = state;
+    checked = state;
 }
 
 - (void) modifyState
 {
     NSDictionary *currentTask = [[NSDictionary alloc] initWithObjectsAndKeys: self.cellTitle, @"taskTitle", self.cellDueDate, @"taskDueDate", nil];
-    [services setTaskCompleted: currentTask taskDone: self.checked parentTaskList: self.taskListTitle];
+    [services setTaskCompleted: currentTask taskDone: checked parentTaskList: self.taskListTitle];
 }
 @end
 
