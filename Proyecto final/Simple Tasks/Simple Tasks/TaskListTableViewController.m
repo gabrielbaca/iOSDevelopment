@@ -58,10 +58,18 @@
 - (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
     if (buttonIndex == 1) {
         NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[alertView textFieldAtIndex:0].text, @"title" , nil];
-        [services addTaskList: dic tasks: nil];
-        [taskListsArray insertObject: dic atIndex:0];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if(![[alertView textFieldAtIndex: 0].text isEqualToString: @""])
+        {
+            [services addTaskList: dic tasks: nil];
+            [taskListsArray insertObject: dic atIndex:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        else
+        {
+            UIAlertView *errorPrompt = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Insert a valid task list title" delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
+            [errorPrompt show];
+        }
     }
 }
 
@@ -71,6 +79,8 @@
         taskListsArray = [[NSMutableArray alloc] init];
     }
     UIAlertView *titlePrompt = [[UIAlertView alloc] initWithTitle:@"Task list title" message:@"Insert task list title" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"OK",nil), nil];
+
+
     [titlePrompt setAlertViewStyle: UIAlertViewStylePlainTextInput];
     [titlePrompt show];
 }

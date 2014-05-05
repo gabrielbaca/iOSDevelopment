@@ -197,7 +197,7 @@
     }
 }
 
-- (void) setTaskCompleted: (id) currentTask taskDone: (BOOL) taskCompletion parentTaskList: (NSString *) pTaskList
+- (void) setTaskCompleted: (id) currentTask taskDone: (NSNumber *) taskCompletion parentTaskList: (NSString *) pTaskList
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     
@@ -206,8 +206,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    NSString *searchValue = [NSString stringWithFormat:@"*%@*", pTaskList];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
+    //NSString *searchValue = [NSString stringWithFormat:@"*%@*", pTaskList];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title == %@", pTaskList];
     [request setPredicate: predicate];
     
     NSError *error;
@@ -224,7 +224,8 @@
         NSLog(@"Data not found");
     }
     
-    oldTask.taskDone = [NSNumber numberWithBool: taskCompletion];
+    oldTask.taskDone = taskCompletion;
+    NSLog(@"Value %@ was written", taskCompletion);
     
     [context save: &error];
 }
@@ -238,8 +239,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    NSString *searchValue = [NSString stringWithFormat:@"*%@*", title];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
+    //NSString *searchValue = [NSString stringWithFormat:@"*%@*", title];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [currentTask objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [currentTask objectForKey: @"taskDueDate"] , @"ANY taskListRel.title == %@", title];
     [request setPredicate: predicate];
     
     NSError *error;
@@ -268,8 +269,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Task"];
     //[request setEntity:entityDescription];
     
-    NSString *searchValue = [NSString stringWithFormat:@"*%@*", [taskList valueForKey:@"title"]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(ANY taskListRel.title like %@)", searchValue];
+    //NSString *searchValue = [NSString stringWithFormat:@"*%@*", [taskList valueForKey:@"title"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(ANY taskListRel.title == %@)", [taskList valueForKey:@"title"]];
     [request setPredicate: predicate];
     
     
@@ -310,8 +311,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [taskToBeDeleted objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [taskToBeDeleted objectForKey: @"taskDueDate"] , @"ANY taskListRel.title like %@", searchValue];
+    //NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(taskTitle == %@)", [taskToBeDeleted objectForKey: @"taskTitle"], @"(taskDueDate == %@)", [taskToBeDeleted objectForKey: @"taskDueDate"] , @"ANY taskListRel.title == %@", [myTaskList valueForKey:@"title"]];
     [request setPredicate: predicate];
     
     NSError *error;
@@ -339,8 +340,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"ANY taskListRel.title like %@", searchValue];
+    //NSString *searchValue = [NSString stringWithFormat:@"*%@*", [myTaskList valueForKey:@"title"]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"ANY taskListRel.title == %@", [myTaskList valueForKey:@"title"]];
     [request setPredicate: predicate];
     
     NSError *error;

@@ -124,36 +124,20 @@
     cell = [tableView dequeueReusableCellWithIdentifier:@"Task" forIndexPath:indexPath];
     NSDictionary *dic = [tasks objectAtIndex: indexPath.row];
     cell.cellTitle.text = [dic objectForKey: @"taskTitle"];
+    NSLog(@"Value %@ was read", [dic objectForKey: @"taskDone"]);
+    cell.checked = [dic objectForKey: @"taskDone"];
     
-    /*-----------------------------------------------------------------------*/
-    
+#warning turn date to red
+    cell.dueDate = [dic objectForKey: @"taskDueDate"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat: @"dd/MM/yyyy"];
     NSString *tempString = [formatter stringFromDate: [dic objectForKey:@"taskDueDate"]];
     
-    /*-----------------------------------------------------------------------*/
-    
     cell.cellDueDate.text = tempString;
     cell.taskListTitle = _taskListTitle;
     
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc]  initWithString: [dic objectForKey: @"taskTitle"]];
-    NSMutableAttributedString *dueDate = [[NSMutableAttributedString alloc]  initWithString: tempString];
-    
-//    if([cell readState])
-//    {
-//        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
-//        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleThick] range: NSMakeRange(0, [tempString length])];
-//    }
-//    else
-//    {
-//        [title addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [[dic objectForKey: @"taskTitle" ] length])];
-//        [dueDate addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleNone] range: NSMakeRange(0, [tempString length])];
-//    }
-    
-    [cell.cellTitle setAttributedText: title];
-    [cell.cellDueDate setAttributedText: dueDate];
-    
-    [cell setState: [[dic objectForKey: @"taskDone"] boolValue]];
+    [cell modifyFormat];
+    //[cell setState: [dic objectForKey: @"taskDone"]];
     return cell;
 }
 
