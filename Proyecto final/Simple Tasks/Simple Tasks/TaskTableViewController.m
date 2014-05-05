@@ -153,7 +153,7 @@
     [cell.cellTitle setAttributedText: title];
     [cell.cellDueDate setAttributedText: dueDate];
     
-    [cell setState: [dic objectForKey:@"taskDone"]];
+    [cell setState: [[dic objectForKey: @"taskDone"] boolValue]];
     return cell;
 }
 
@@ -240,7 +240,7 @@
 
 - (IBAction)taskChecked: (id) sender
 {
-    TaskCell *taskCell = (TaskCell *) sender;
+    //TaskCell *taskCell = (TaskCell *) sender;
     //[sender setHidden: YES];
 }
 @end
