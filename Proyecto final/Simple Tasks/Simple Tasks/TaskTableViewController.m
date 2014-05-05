@@ -126,8 +126,6 @@
     cell.cellTitle.text = [dic objectForKey: @"taskTitle"];
     NSLog(@"Value %@ was read", [dic objectForKey: @"taskDone"]);
     cell.checked = [dic objectForKey: @"taskDone"];
-    
-#warning turn date to red
     cell.dueDate = [dic objectForKey: @"taskDueDate"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat: @"dd/MM/yyyy"];

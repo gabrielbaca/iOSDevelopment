@@ -329,7 +329,7 @@
     }
 }
 
-- (int) countTasks: (NSString *) taskListTitle
+- (NSUInteger) countTasks: (NSString *) taskListTitle
 {
     TaskList *myTaskList = [self searchTaskList: taskListTitle];
     

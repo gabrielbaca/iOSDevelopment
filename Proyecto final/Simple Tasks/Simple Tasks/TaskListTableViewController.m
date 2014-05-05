@@ -106,13 +106,13 @@
     
     NSDictionary *dic = [taskListsArray objectAtIndex: indexPath.row];
     cell.textLabel.text = [dic objectForKey:@"title"];
-    int nTasks = [services countTasks: [dic objectForKey:@"title"]];
+    NSUInteger nTasks = [services countTasks: [dic objectForKey:@"title"]];
     if (nTasks != 1) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d tasks", [services countTasks: [dic objectForKey:@"title"]]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu tasks", (unsigned long)[services countTasks: [dic objectForKey:@"title"]]];
     }
     else
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d task", [services countTasks: [dic objectForKey:@"title"]]];
+        cell.detailTextLabel.text = [NSString stringWithFormat: @"%lu task", (unsigned long) [services countTasks: [dic objectForKey:@"title"]]];
     }
     
     return cell;
